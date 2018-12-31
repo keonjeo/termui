@@ -45,11 +45,13 @@ func (g *Gauge) Draw(buf *Buffer) {
 	// plot label
 	labelXCoordinate := g.Inner.Min.X + (g.Inner.Dx() / 2) - int(float64(len(label))/2)
 	labelYCoordinate := g.Inner.Min.Y + ((g.Inner.Dy() - 1) / 2)
-	for i, char := range label {
-		attrs := AttrPair{g.PercentColor, ColorDefault}
-		if labelXCoordinate+i <= g.Inner.Min.X+barWidth {
-			attrs = AttrPair{g.BarColor, AttrReverse}
+	if labelYCoordinate < g.Inner.Max.Y {
+		for i, char := range label {
+			attrs := AttrPair{g.PercentColor, ColorDefault}
+			if labelXCoordinate+i+1 <= g.Inner.Min.X+barWidth {
+				attrs = AttrPair{g.BarColor, AttrReverse}
+			}
+			buf.SetCell(Cell{char, attrs}, image.Pt(labelXCoordinate+i, labelYCoordinate))
 		}
-		buf.SetCell(Cell{char, attrs}, image.Pt(labelXCoordinate+i, labelYCoordinate))
 	}
 }

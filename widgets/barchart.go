@@ -8,8 +8,9 @@ import (
 	"fmt"
 	"image"
 
-	. "github.com/gizak/termui"
 	rw "github.com/mattn/go-runewidth"
+
+	. "github.com/gizak/termui"
 )
 
 type BarChart struct {
@@ -71,14 +72,16 @@ func (bc *BarChart) Draw(buf *Buffer) {
 
 		// draw number
 		numberXCoordinate := barXCoordinate + int((float64(bc.BarWidth) / 2))
-		buf.SetString(
-			fmt.Sprintf("%d", data),
-			image.Pt(numberXCoordinate, bc.Inner.Max.Y-2),
-			AttrPair{
-				SelectAttr(bc.NumColors, i),
-				SelectAttr(bc.BarColors, i),
-			},
-		)
+		if numberXCoordinate <= bc.Inner.Max.X {
+			buf.SetString(
+				fmt.Sprintf("%d", data),
+				image.Pt(numberXCoordinate, bc.Inner.Max.Y-2),
+				AttrPair{
+					SelectAttr(bc.NumColors, i+1),
+					SelectAttr(bc.BarColors, i),
+				},
+			)
+		}
 
 		barXCoordinate += (bc.BarWidth + bc.BarGap)
 	}

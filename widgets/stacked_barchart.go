@@ -8,8 +8,9 @@ import (
 	"fmt"
 	"image"
 
-	. "github.com/gizak/termui"
 	rw "github.com/mattn/go-runewidth"
+
+	. "github.com/gizak/termui"
 )
 
 type StackedBarChart struct {

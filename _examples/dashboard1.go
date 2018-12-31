@@ -20,8 +20,9 @@ func main() {
 	}
 	defer ui.Close()
 
-	p := widgets.NewParagraph("PRESS q TO QUIT DEMO")
+	p := widgets.NewParagraph()
 	p.Title = "Text Box"
+	p.Text = "PRESS q TO QUIT DEMO"
 	p.SetRect(0, 0, 50, 5)
 	p.TextAttrs.Fg = ui.ColorWhite
 	p.BorderAttrs.Fg = ui.ColorCyan
@@ -112,7 +113,8 @@ func main() {
 	lc2.AxesColor = ui.ColorWhite
 	lc2.LineColors[0] = ui.ColorYellow | ui.AttrBold
 
-	p2 := widgets.NewParagraph("Hey!\nI am a borderless block!")
+	p2 := widgets.NewParagraph()
+	p2.Text = "Hey!\nI am a borderless block!"
 	p2.Border = false
 	p2.SetRect(50, 10, 75, 10)
 	p2.TextAttrs.Fg = ui.ColorMagenta
@@ -143,7 +145,6 @@ func main() {
 			}
 		case <-ticker:
 			updateParagraph(tickerCount)
-			ui.Clear()
 			draw(tickerCount)
 			tickerCount++
 		}

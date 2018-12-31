@@ -38,7 +38,6 @@ func main() {
 	sl2.Data = data[5:]
 	sl2.LineColor = ui.ColorMagenta
 
-	// group
 	slg1 := widgets.NewSparklineGroup(sl0, sl1, sl2)
 	slg1.Title = "Group Sparklines"
 	slg1.SetRect(0, 10, 25, 25)

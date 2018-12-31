@@ -34,7 +34,7 @@ func main() {
 	lc0 := widgets.NewLineChart()
 	lc0.Title = "braille-mode Line Chart"
 	lc0.Data = sinData
-	lc0.SetRect(0, 0, 50, 12)
+	lc0.SetRect(0, 0, 50, 15)
 	lc0.AxesColor = ui.ColorWhite
 	lc0.LineColors[0] = ui.ColorGreen | ui.AttrBold
 
@@ -42,7 +42,7 @@ func main() {
 	lc1.Title = "dot-mode Line Chart"
 	lc1.LineType = widgets.DotLine
 	lc1.Data = sinData
-	lc1.SetRect(51, 0, 77, 12)
+	lc1.SetRect(50, 0, 75, 10)
 	lc1.DotChar = '+'
 	lc1.AxesColor = ui.ColorWhite
 	lc1.LineColors[0] = ui.ColorYellow | ui.AttrBold
@@ -53,7 +53,7 @@ func main() {
 	lc2.Data = make([][]float64, 2)
 	lc2.Data[0] = sinData[0][4:]
 	lc2.Data[1] = sinData[1][4:]
-	lc2.SetRect(0, 12, 77, 28)
+	lc2.SetRect(0, 15, 50, 30)
 	lc2.AxesColor = ui.ColorWhite
 	lc2.LineColors[0] = ui.ColorCyan | ui.AttrBold
 
